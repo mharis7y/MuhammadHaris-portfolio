@@ -73,9 +73,13 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${montserrat.variable} ${openSans.variable} ${raleway.variable} ${nunito.variable} ${roboto.variable} scroll-smooth`}
     >
-      <body className="bg-black text-black antialiased selection:bg-black selection:text-white">
+      <body
+        suppressHydrationWarning
+        className="bg-black text-black antialiased selection:bg-black selection:text-white"
+      >
         {children}
       </body>
     </html>

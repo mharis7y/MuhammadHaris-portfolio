@@ -12,6 +12,7 @@ export function Contact() {
     email: "",
     phone: "",
     message: "",
+    website: "",
   });
 
   const [status, setStatus] = useState({
@@ -24,7 +25,7 @@ export function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setStatus({ submitting: false, submitted: false, error: "Please fill out all required fields (*)." });
@@ -33,15 +34,32 @@ export function Contact() {
 
     setStatus({ submitting: true, submitted: false, error: null });
 
-    // Simulate submission (or emailto dispatch)
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setStatus({
+          submitting: false,
+          submitted: false,
+          error: data.error || "Something went wrong. Please try again.",
+        });
+        return;
+      }
+
+      setStatus({ submitting: false, submitted: true, error: null });
+      setFormData({ name: "", email: "", phone: "", message: "", website: "" });
+    } catch {
       setStatus({
         submitting: false,
-        submitted: true,
-        error: null,
+        submitted: false,
+        error: "Network error. Please check your connection and try again.",
       });
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    }, 800);
+    }
   };
 
   return (
@@ -101,6 +119,18 @@ export function Contact() {
               Thank you! Your message has been received. I will get back to you promptly.
             </div>
           )}
+
+          {/* Honeypot: hidden from humans, bots tend to fill it */}
+          <input
+            type="text"
+            name="website"
+            value={formData.website}
+            onChange={handleChange}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute -left-[9999px] w-px h-px opacity-0"
+          />
 
           {/* Field 1: Name */}
           <div className="w-full mb-10 md:mb-12">

@@ -19,7 +19,7 @@ export const heroData = {
     { name: "GitHub", icon: "github", url: "https://github.com/mharis7y" },
     { name: "LinkedIn", icon: "linkedin", url: "https://www.linkedin.com/in/mharis7y/" },
   ],
-  photo: "/images/haris-clean-black.jpg",
+  photo: "/images/hero-cutout.webp",
 };
 
 export const mobileLabData = {
@@ -76,26 +76,18 @@ export const skillsData = {
         { name: "ZUSTAND", color: "#443E38", iconType: "zustand" },
         { name: "FIREBASE", color: "#FFA611", iconType: "firebase" },
         { name: "GIT", color: "#F05032", iconType: "git" },
-      ],
-    },
-    {
-      id: "learning",
-      title: "LEARNING:",
-      skills: [
-        { name: "PYTHON", color: "#3776AB", iconType: "python" },
-        { name: "SQLITE", color: "#003B57", iconType: "sqlite" },
         { name: "NODEJS", color: "#539E43", iconType: "nodejs" },
         { name: "APPWRITE", color: "#FD366E", iconType: "appwrite" },
+        { name: "REST API", color: "#0F766E", iconType: "api" },
       ],
     },
     {
       id: "other-skills",
       title: "OTHER SKILLS:",
       skills: [
-        { name: "ENGLISH (ADVANCED)", color: "#00247D", iconType: "flag-uk" },
-        { name: "URDU (NATIVE)", color: "#01411C", iconType: "flag-pk" },
-        { name: "PASHTO (INTERMEDIATE)", color: "#006600", iconType: "flag-pashto" },
-        { name: "POSTMAN / REST", color: "#FF6C37", iconType: "postman" },
+        { name: "PYTHON", color: "#3776AB", iconType: "python" },
+        { name: "SQLITE", color: "#003B57", iconType: "sqlite" },
+        { name: "POSTMAN", color: "#FF6C37", iconType: "postman" },
       ],
     },
   ],

@@ -59,16 +59,24 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right Portrait Image (Properly centered in the right black section) */}
-        <div className="w-[54%] h-full flex items-center justify-center p-6 lg:p-12">
-          <div className="relative w-[480px] lg:w-[560px] xl:w-[620px] h-[480px] lg:h-[560px] xl:h-[620px] flex items-center justify-center">
+        {/* Right Portrait: transparent cutout, anchored to the bottom edge of the hero */}
+        <div className="relative w-[54%] h-full flex items-end justify-center">
+          {/* Soft backlight so the dark suit separates from the black background */}
+          <div
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[88%] aspect-square rounded-full pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(closest-side, rgba(120,140,190,0.28) 0%, rgba(120,140,190,0.10) 55%, rgba(0,0,0,0) 100%)",
+            }}
+          />
+          <div className="relative w-[92%] max-w-[760px] aspect-[1379/1614]">
             <Image
               src={heroData.photo}
               alt="Muhammad Haris - React Native Developer"
               fill
-              priority
-              className="object-contain object-center select-none"
-              sizes="(min-width: 1280px) 620px, (min-width: 1024px) 560px, 480px"
+              preload
+              unoptimized
+              className="object-contain object-bottom select-none"
             />
           </div>
         </div>
@@ -76,16 +84,23 @@ export function Hero() {
 
       {/* ================= MOBILE VIEW (matches 'mobile landing.png') ================= */}
       <div className="block md:hidden relative w-full h-[100dvh] bg-black overflow-hidden">
-        {/* Centered background photo */}
-        <div className="absolute inset-0 w-full h-[76%] flex items-center justify-center pt-14 px-4">
-          <div className="relative w-full h-full max-h-[460px] max-w-[460px]">
+        {/* Portrait anchored to the bottom, sitting behind the slanted band */}
+        <div className="absolute bottom-0 left-0 right-0 h-[80%] flex items-end justify-center">
+          <div
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] aspect-square rounded-full pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(closest-side, rgba(120,140,190,0.28) 0%, rgba(0,0,0,0) 100%)",
+            }}
+          />
+          <div className="relative h-full w-full max-w-[520px]">
             <Image
               src={heroData.photo}
               alt="Muhammad Haris"
               fill
-              priority
-              className="object-contain object-center select-none"
-              sizes="(max-width: 768px) 460px, 460px"
+              loading="eager"
+              unoptimized
+              className="object-contain object-bottom select-none"
             />
           </div>
         </div>

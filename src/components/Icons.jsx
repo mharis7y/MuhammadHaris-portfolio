@@ -369,6 +369,22 @@ export function Icon({ name, className = "", size = 24, color = "currentColor" }
         </svg>
       );
 
+    case "api":
+      return (
+        <svg width={size} height={size} viewBox="0 0 128 128" className={className}>
+          <rect width="128" height="128" rx="24" fill="#0F766E" />
+          <path
+            d="M48 44L28 64l20 20M80 44l20 20-20 20"
+            fill="none"
+            stroke="#FFFFFF"
+            strokeWidth="9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path d="M70 38L58 90" stroke="#5EEAD4" strokeWidth="9" strokeLinecap="round" />
+        </svg>
+      );
+
     case "postman":
       return (
         <svg width={size} height={size} viewBox="0 0 128 128" className={className}>
